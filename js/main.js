@@ -15,8 +15,9 @@ const getMeetingInfo = async function(){
   try {
     const meetingName = 'FirefoxTest';
     const region = this.region || 'us-east-1';
+    const host = location.protocol+'//'+location.hostname+(location.port ? ':'+location.port: '');
     const response = await fetch(
-      `http://127.0.0.1:8080/join?title=${encodeURIComponent(meetingName)}&name=${encodeURIComponent(`User${Math.floor(Math.random()*100)}`)}&region=${encodeURIComponent(region)}`,
+      `${host}/join?title=${encodeURIComponent(meetingName)}&name=${encodeURIComponent(`User${Math.floor(Math.random()*100)}`)}&region=${encodeURIComponent(region)}`,
       {
         method: 'POST',
       }
@@ -34,8 +35,8 @@ const startMeeting = async function(){
   let configuration = new ChimeSDK.MeetingSessionConfiguration(joinInfo.Meeting, joinInfo.Attendee);
   console.log(`Meeting: ${joinInfo.Meeting.Meeting.MeetingId}`)
   console.log(`Attendee: ${joinInfo.Attendee.Attendee.AttendeeId}`)
-  // configuration.enableWebAudio = true;
-  // configuration.enableUnifiedPlanForChromiumBasedBrowsers = true;
+  configuration.enableWebAudio = true;
+  configuration.enableUnifiedPlanForChromiumBasedBrowsers = true;
 
   const logger = new ChimeSDK.ConsoleLogger(
     "ChimeMeetingLogs", 
