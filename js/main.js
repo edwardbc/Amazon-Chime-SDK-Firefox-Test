@@ -35,8 +35,8 @@ const startMeeting = async function(){
   let configuration = new ChimeSDK.MeetingSessionConfiguration(joinInfo.Meeting, joinInfo.Attendee);
   console.log(`Meeting: ${joinInfo.Meeting.Meeting.MeetingId}`)
   console.log(`Attendee: ${joinInfo.Attendee.Attendee.AttendeeId}`)
-  configuration.enableWebAudio = true;
-  configuration.enableUnifiedPlanForChromiumBasedBrowsers = true;
+  // configuration.enableWebAudio = true;
+  // configuration.enableUnifiedPlanForChromiumBasedBrowsers = true;
 
   const logger = new ChimeSDK.ConsoleLogger(
     "ChimeMeetingLogs", 
