@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Amazon SDK Firefox Demo</title>
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@exampledev/new.css@1.1.2/new.min.css">
+	<link rel="icon" href="data:;base64,=">
+	<style type="text/css">
+		video { width: 250px; height: 250px; object-fit:cover;  }
+		#tiles { margin: 30px 0 }; 
+	</style>
+</head>
+<body>
+	<h1>Amazon Chime SDK Firefox Tests</h1>
+
+	<h2>Scenario 1</h2>
+	<h3>Tile Errors</h3>
+
+	<h4>Steps</h4>
+
+	<ol>
+		<li>Open this page on Chrome, and hit Start Meeting</li>
+		<li>Open this page on Firefox, and hit Start Meeting</li>
+		<li>On Chrome, turn off and on several times your video stream.</li>
+	</ol>
+
+	<p><strong>Result:</strong>An error will be thrown and video tiles might freeze.</p>
+
+	<h2>Scenario 2</h2>
+	<h3>Duplicated Tiles</h3>
+
+	<h4>Steps</h4>
+
+	<ol>
+		<li>Open this page on Chrome, and allow video to start</li>
+		<li>Open a second Chrome window and start meeting to add a second tile</li>
+		<li>Open Firefox and start meeting</li>
+	</ol>
+
+	<p><strong>Result:</strong>A duplicated tile will be added for one of the attendees. <br>
+	This tile also freezes when other users leave.</p>
+
+
+	<button id="startButton" style="display:none">Start Meeting</button>
+	<button id="toggleVideoButton" style="display:none">Turn Video Off</button>
+
+	<div id="tiles">
+	</div>
+
+	<audio id="audioStream" hidden></audio>
+	
+	<script src="/js/lib/amazon-chime-sdk.min.js"></script>
+	<script src="/js/tiles.js"></script>
+	<script src="/js/main.js"></script>
+
+</body>
+</html>
